@@ -1,5 +1,5 @@
 {% set name = "scikit-sundae" %}
-{% set version = "1.0.3" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: e2e90498d9fb75c0152aa13fca3c8e497ec7b8295044f34321d76938bd30a7cf
+  sha256: 43bf8c4b6d23c95808922da01d38f620f39ed6fc175c10707eec63dc2cf17986
 
 build:
   script:
