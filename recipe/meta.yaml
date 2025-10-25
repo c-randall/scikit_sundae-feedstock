@@ -1,5 +1,5 @@
 {% set name = "scikit-sundae" %}
-{% set version = "1.0.3" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: e2e90498d9fb75c0152aa13fca3c8e497ec7b8295044f34321d76938bd30a7cf
+  sha256: 43bf8c4b6d23c95808922da01d38f620f39ed6fc175c10707eec63dc2cf17986
 
 build:
   script:
@@ -22,7 +22,8 @@ requirements:
     - setuptools  # [build_platform != target_platform]
     - cython  # [build_platform != target_platform]
     - numpy  # [build_platform != target_platform]
-    - sundials >=7.2,<7.3  # [build_platform != target_platform]
+    - packaging  # [build_platform != target_platform]
+    - sundials >=7.5,<7.6  # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
@@ -33,20 +34,22 @@ requirements:
     - numpy
     - libblas
     - pip
-    - sundials >=7.2,<7.3
+    - sundials >=7.5,<7.6
   run:
     - python
     - numpy
-    - sundials >=7.2,<7.3
+    - scipy
+    - sundials >=7.5,<7.6
 
 test:
   imports:
     - numpy
+    - scipy
     - sksundae
 
 about:
   home: https://github.com/NREL/scikit-sundae
-  summary: 'SUNDIALS bindings to differential aglebraic equation solvers.'
+  summary: Python bindings to SUNDIALS differential aglebraic equation solvers.
   description: |
     scikit-SUNDAE provides Python bindings to SUNDIALS integrators. Specifically,
     it interfaces with the IDA and CVODE solvers. These are capable of efficiently
