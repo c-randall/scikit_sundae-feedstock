@@ -38,6 +38,7 @@ requirements:
   run:
     - python
     - numpy
+    - scipy
     - sundials >=7.5,<7.6
 
 test:
