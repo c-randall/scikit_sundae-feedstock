@@ -22,7 +22,8 @@ requirements:
     - setuptools  # [build_platform != target_platform]
     - cython  # [build_platform != target_platform]
     - numpy  # [build_platform != target_platform]
-    - sundials >=7.2,<7.3  # [build_platform != target_platform]
+    - packaging  # [build_platform != target_platform]
+    - sundials >=7.5,<7.6  # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
@@ -33,20 +34,21 @@ requirements:
     - numpy
     - libblas
     - pip
-    - sundials >=7.2,<7.3
+    - sundials >=7.5,<7.6
   run:
     - python
     - numpy
-    - sundials >=7.2,<7.3
+    - sundials >=7.5,<7.6
 
 test:
   imports:
     - numpy
+    - scipy
     - sksundae
 
 about:
   home: https://github.com/NREL/scikit-sundae
-  summary: 'SUNDIALS bindings to differential aglebraic equation solvers.'
+  summary: Python bindings to SUNDIALS differential aglebraic equation solvers.
   description: |
     scikit-SUNDAE provides Python bindings to SUNDIALS integrators. Specifically,
     it interfaces with the IDA and CVODE solvers. These are capable of efficiently
